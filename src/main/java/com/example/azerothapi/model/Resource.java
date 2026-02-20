@@ -1,65 +1,32 @@
 package com.example.azerothapi.model;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 
-
+@Entity
+@Data
+@Table(name = "resources")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Resource {
-    public enum ContentType{
-        VIDEO, MARKDOWN, NOTE, LINK
-    }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    private Long chapter_id;
+
+    @Column(name = "title", nullable = false)
     private String title;
-    private ContentType content_type;
-    private String text;
 
-    public Resource(Long id, Long chapter_id, String title, ContentType content_type, String text) {
-        this.id = id;
-        this.chapter_id = chapter_id;
-        this.title = title;
-        this.content_type = content_type;
-        this.text = text;
-    }
+    @Column(columnDefinition = "TEXT")
+    private String markdownBody;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chapter_id")
+    private Chapter chapter;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getChapter_id() {
-        return chapter_id;
-    }
-
-    public void setChapter_id(Long chapter_id) {
-        this.chapter_id = chapter_id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public ContentType getContent_type() {
-        return content_type;
-    }
-
-    public void setContent_type(ContentType content_type) {
-        this.content_type = content_type;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 }
