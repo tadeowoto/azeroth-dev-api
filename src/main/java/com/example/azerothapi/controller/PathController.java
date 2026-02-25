@@ -4,15 +4,13 @@ import com.example.azerothapi.service.PathService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/path")
 public class PathController {
-
 
     private final PathService service;
 
@@ -28,6 +26,8 @@ public class PathController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+
 
 
 

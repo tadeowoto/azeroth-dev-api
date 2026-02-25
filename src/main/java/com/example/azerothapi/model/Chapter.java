@@ -1,4 +1,5 @@
 package com.example.azerothapi.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,9 @@ public class Chapter {
     private Long id;
 
     @ToString.Exclude
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "path_id")
+    @JsonIgnoreProperties("chapters")
     private Path path;
 
     @Column(name = "title", nullable = false, length = 100)
