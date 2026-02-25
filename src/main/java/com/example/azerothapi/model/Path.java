@@ -1,5 +1,6 @@
 package com.example.azerothapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Path {
     private String description;
 
     @OneToMany(mappedBy = "path", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("path")
     private List<Chapter> chapters = new ArrayList<>();
 
 
