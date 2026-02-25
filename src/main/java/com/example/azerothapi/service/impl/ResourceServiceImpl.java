@@ -18,6 +18,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public List<Resource> buscarRecursosPorCapituloId(Long id) {
-        return repository.findByChapterId(id);
+        return repository.findByChapterId(id)
+                .orElseThrow(() -> new EntityNotFoundException("no existe el recurso con ese id" + id));
     }
 }
