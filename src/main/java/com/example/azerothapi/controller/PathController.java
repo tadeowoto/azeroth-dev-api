@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -21,10 +22,8 @@ public class PathController {
     }
 
     @GetMapping("/{slug}")
-    public ResponseEntity<Path> findPathBySlug(@PathVariable String slug) {
-        return service.buscarPorSlug(slug)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<Optional<Path>> findPathBySlug(@PathVariable String slug) {
+        return ResponseEntity.ok(service.buscarPorSlug(slug));
     }
 
 
