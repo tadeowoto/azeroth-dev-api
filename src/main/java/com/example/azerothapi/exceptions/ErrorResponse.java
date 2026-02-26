@@ -17,5 +17,6 @@ public class ErrorResponse {
         this.statusCode = statusCode;
         this.errorDetails = errorDetails;
         this.message = message;
+        timestamp = LocalDateTime.now();
     }
 }
