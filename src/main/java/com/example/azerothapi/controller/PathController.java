@@ -26,6 +26,11 @@ public class PathController {
         return ResponseEntity.ok(service.buscarPorSlug(slug));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<String>> listAllSlugs(){
+        return ResponseEntity.ok(service.listarSlugs());
+    }
+
 
 
 

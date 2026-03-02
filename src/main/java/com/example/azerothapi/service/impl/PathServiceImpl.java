@@ -25,4 +25,9 @@ public class PathServiceImpl implements PathService {
         return repository.findBySlug(slug);
     }
 
+    @Override
+    public List<String> listarSlugs() {
+        return repository.findAllSlugs();
+    }
+
 }

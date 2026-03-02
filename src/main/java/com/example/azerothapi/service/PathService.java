@@ -13,5 +13,6 @@ public interface PathService {
 
     Optional<Path> buscarPorSlug(String slug);
 
+    List<String> listarSlugs();
 
 }
